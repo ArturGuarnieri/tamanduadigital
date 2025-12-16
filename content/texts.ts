@@ -1,0 +1,4 @@
+export const homeParagraph = {
+  pt: `Na Tamanduá Digital, acreditamos que presença digital não é luxo, é o alicerce do crescimento sustentável de qualquer negócio.\nCombinamos design minimalista, tecnologia personalizada e valores humanos para criar sites que não apenas impressionam, mas também convertem visitantes em clientes.\nNosso time presente em ambos Brasil + Austrália, une qualidade técnica global com custo competitivo, garantindo um serviço acessível sem comprometer a excelência.`,
+  en: `At Tamanduá Digital, we believe a strong digital presence isn’t a luxury — it’s the foundation for sustainable business growth.\nWe blend minimalist design, custom-built technology, and human values to create websites that don’t just look great — they deliver real results.\nOur team, based in Brazil + Australia combines global technical quality with competitive pricing, ensuring you get accessible solutions without compromising excellence.`
+};
