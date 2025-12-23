@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import { useLanguage } from "@/contexts/language-context";
+import { homeParagraph } from "@/content/texts";
 
 type Translated = { en: string; pt: string };
 interface BannerSlide {
@@ -30,7 +31,7 @@ interface BannerCarouselProps {
   autoPlayInterval?: number;
 }
 
-export function BannerCarousel({
+function BannerCarouselComponent({
   slides,
   className,
   autoPlay = true,
@@ -160,5 +161,20 @@ export function BannerCarousel({
         </div>
       </Carousel>
     </div>
+  );
+}
+
+export function BannerCarousel(props: BannerCarouselProps) {
+  const { language } = useLanguage();
+
+  return (
+    <section id="home">
+      <BannerCarouselComponent {...props} />
+      <div className="w-full rounded-xl md:rounded-2xl lg:rounded-3xl bg-background -mt-px py-6">
+        <p className="text-base md:text-lg text-muted-foreground text-justify m-0">
+          {homeParagraph[language]}
+        </p>
+      </div>
+    </section>
   );
 }

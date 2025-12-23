@@ -19,6 +19,9 @@ const madimiOne = Madimi_One({
 export const metadata: Metadata = {
   title: "Tamanduá Digital",
   description: "Build your personalised website with a specialised team.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -13,36 +13,54 @@ import { Settings, Check } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/contexts/language-context";
 
-export default function MenuLinks({ style }: { style: string }) {
+export default function MenuLinks({ style, onClose }: { style: string; onClose?: () => void }) {
   const { theme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.href;
+    const hash = href.substring(href.indexOf("#"));
+    
+    e.preventDefault();
+    
+    const element = document.querySelector(hash);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    
+    onClose?.();
+  };
+
   return (
     <nav className={style}>
-      <Link
-        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity"
-        href="/"
+      <a
+        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity cursor-pointer"
+        href="#home"
+        onClick={handleLinkClick}
       >
         {t("home")}
-      </Link>
-      <Link
-        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity"
-        href="/services"
+      </a>
+      <a
+        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity cursor-pointer"
+        href="#services"
+        onClick={handleLinkClick}
       >
         {t("ourServices")}
-      </Link>
-      <Link
-        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity"
-        href="/who-we-are"
+      </a>
+      <a
+        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity cursor-pointer"
+        href="#who-we-are"
+        onClick={handleLinkClick}
       >
         {t("whoWeAre")}
-      </Link>
-      <Link
-        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity"
-        href="/contact-us"
+      </a>
+      <a
+        className="hover:text-foreground hover:underline underline-offset-2 transition-opacity cursor-pointer"
+        href="#contact-us"
+        onClick={handleLinkClick}
       >
         {t("contactUs")}
-      </Link>
+      </a>
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
           <Settings className="hover:rotate-90 transition-transform duration-300" />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -10,6 +11,8 @@ import { List } from "lucide-react";
 import MenuLinks from "./menu-links";
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="w-full">
       <div className="flex justify-between items-center m-4 xl:mx-auto max-w-7xl">
@@ -31,19 +34,21 @@ export default function Header() {
               className="transition-colors duration-300 fill-[#FB8C00] dark:fill-white"
             />
           </svg>
-          <h1 className="font-title text-3xl transition-colors duration-300 dark:text-[#FB8C00] text-[#1E88E5]">Tamanduá Digital</h1>
+          <h1 className="font-title text-2xl transition-colors duration-300 dark:text-[#FB8C00] text-[#1E88E5]">Tamanduá Digital</h1>
         </div>
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger className="lg:hidden text-foreground text-4xl">
             <List className="text-foreground" />
           </SheetTrigger>
           <SheetContent
             side="top"
             className="flex justify-center items-center bg-background h-screen text-foreground"
+            onCloseAutoFocus={(e) => e.preventDefault()}
+            onOpenAutoFocus={(e) => e.preventDefault()}
           >
             <SheetHeader>
               <SheetTitle className="hidden">Menu</SheetTitle>
-              <MenuLinks style="flex flex-col items-center justify-center gap-8 text-lg font-medium text-muted-foreground" />
+              <MenuLinks style="flex flex-col items-center justify-center gap-8 text-lg font-medium text-muted-foreground" onClose={() => setOpen(false)} />
             </SheetHeader>
           </SheetContent>
         </Sheet>
